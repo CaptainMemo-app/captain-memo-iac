@@ -106,7 +106,7 @@ cat docs/POLICIES.md
 
 ## License
 
-MIT License - See `LICENSE` file
+Apache License 2.0 - See `LICENSE` file
 
 ---
 
