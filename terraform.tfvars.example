@@ -1,0 +1,53 @@
+# Example terraform.tfvars file
+# Copy this to live/{env}/terraform.tfvars and fill in your actual OCIDs
+#
+# You can get OCIDs from:
+# 1. OCI Console → Copy OCID button
+# 2. OCI CLI commands (see README.md troubleshooting section)
+#
+# IMPORTANT: Each environment needs its own terraform.tfvars file:
+# - live/prod/terraform.tfvars
+# - live/staging/terraform.tfvars  
+# - live/dev/terraform.tfvars
+
+# Universal variables (same for all environments)
+tenancy_ocid  = "ocid1.tenancy.oc1..aaaaaaaa..."
+dev_user_ocid = "ocid1.user.oc1..aaaaaaaa..."
+
+# Production environment variables
+prod_compartment_ocid = "ocid1.compartment.oc1..aaaaaaaa..."
+prod_vault_ocid       = "ocid1.vault.oc1.eu-zurich-1.aaaaaaaa..."
+prod_master_key_ocid  = "ocid1.key.oc1.eu-zurich-1.aaaaaaaa..."
+prod_instance_id      = "ocid1.instance.oc1.eu-zurich-1.aaaaaaaa..."
+
+# Staging environment variables (using same compartment, deployed to Koyeb.com)
+staging_compartment_ocid = "ocid1.compartment.oc1..aaaaaaaa..."    # Same as prod
+staging_vault_ocid       = "ocid1.vault.oc1.eu-zurich-1.aaaaaaaa..."
+staging_master_key_ocid  = "ocid1.key.oc1.eu-zurich-1.aaaaaaaa..."
+staging_instance_id      = ""                                       # Empty - no OCI instance
+
+# Development environment variables (using same compartment, no instance)
+dev_compartment_ocid = "ocid1.compartment.oc1..aaaaaaaa..."        # Same as prod
+dev_vault_ocid       = "ocid1.vault.oc1.eu-zurich-1.aaaaaaaa..."
+dev_master_key_ocid  = "ocid1.key.oc1.eu-zurich-1.aaaaaaaa..."
+
+# EXAMPLE: How to use this file
+# 1. Copy to live/prod/terraform.tfvars and include only prod + universal variables
+# 2. Copy to live/staging/terraform.tfvars and include only staging + universal variables  
+# 3. Copy to live/dev/terraform.tfvars and include only dev + universal variables
+#
+# Example live/prod/terraform.tfvars:
+# tenancy_ocid = "ocid1.tenancy.oc1..your-actual-tenancy-ocid"
+# dev_user_ocid = "ocid1.user.oc1..your-actual-user-ocid"
+# prod_compartment_ocid = "ocid1.compartment.oc1..your-actual-compartment-ocid"
+# prod_vault_ocid = "ocid1.vault.oc1.eu-zurich-1.your-actual-prod-vault-ocid"
+# prod_master_key_ocid = "ocid1.key.oc1.eu-zurich-1.your-actual-prod-key-ocid"
+# prod_instance_id = "ocid1.instance.oc1.eu-zurich-1.your-actual-prod-instance-ocid"
+#
+# Example live/staging/terraform.tfvars (Koyeb.com deployment):
+# tenancy_ocid = "ocid1.tenancy.oc1..your-actual-tenancy-ocid"
+# dev_user_ocid = "ocid1.user.oc1..your-actual-user-ocid"
+# staging_compartment_ocid = "ocid1.compartment.oc1..your-actual-compartment-ocid"  # Same as prod
+# staging_vault_ocid = "ocid1.vault.oc1.eu-zurich-1.your-actual-staging-vault-ocid"
+# staging_master_key_ocid = "ocid1.key.oc1.eu-zurich-1.your-actual-staging-key-ocid"
+# staging_instance_id = ""  # Empty - no OCI instance
